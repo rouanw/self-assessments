@@ -1,3 +1,18 @@
-<p>This is an example self-assessment.</p>
+<h2>Self-assessment rubric</h2>
+<ol>
+  <li>Never heard of it</li>
+  <li>Can identify it when I see it</li>
+  <li>Can make a new one</li>
+  <li>Can refactor and re-organize</li>
+  <li>Can teach others</li>
+</ol>
 
-<canvas spider-chart id="myChart" width="400" height="400"></canvas>
+<hr/>
+
+<small>This is an example self-assessment.</small>
+
+<div ng-repeat="person in team">
+  <h3>{{person.name}}</h3>
+  <span>Working with us since {{person.joined}}</span>
+  <canvas spider-chart person="person" width="400" height="400"></canvas>
+</div>

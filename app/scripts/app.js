@@ -25,6 +25,7 @@ angular
       })
       .when('/self-assessment', {
         templateUrl: 'views/self-assessment.html',
+        controller: 'SelfAssessmentCtrl'
       })
       .otherwise({
         redirectTo: '/'
