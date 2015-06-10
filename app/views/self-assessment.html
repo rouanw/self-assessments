@@ -13,6 +13,6 @@
 
 <div ng-repeat="person in team">
   <h3>{{person.name}}</h3>
-  <span>Working with us since {{person.joined}}</span>
+  <div>Working with us for {{ person.joiningDate | durationInMonths }} months (since {{person.joiningDate | date}})</div>
   <canvas spider-chart person="person" width="400" height="400"></canvas>
 </div>

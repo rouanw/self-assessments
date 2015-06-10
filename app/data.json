@@ -2,7 +2,7 @@
   "team": [
     {
       "name": "Joe",
-      "joined": "2015-04-23T09:00:00.000Z",
+      "joiningDate": "2015-01-23T09:00:00.000Z",
       "currentTeam": "AO",
       "selfAssessment": [
             {

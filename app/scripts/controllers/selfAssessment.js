@@ -1,5 +1,5 @@
 'use strict';
-
+/*global moment:true */
 /**
  * @ngdoc function
  * @name coachingApp.controller:SelfassessmentCtrl
@@ -13,4 +13,9 @@ angular.module('coachingApp')
     $http(request).then(function(result) {
       $scope.team = result.data.team;
     });
+  })
+  .filter('durationInMonths', function() {
+    return function (fromDate) {
+      return moment().diff(moment(fromDate), 'months');
+    };
   });
