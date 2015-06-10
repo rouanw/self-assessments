@@ -19,3 +19,16 @@
     width="400" height="400">
   </canvas>
 </div>
+
+<hr/>
+<h3>Specifics</h3>
+<div ng-repeat="person in team">
+  <div ng-repeat="assessment in person.assessments">
+    <h4>{{assessment.category}}</h4>
+    <canvas spider-chart
+      labels="assessment.labels"
+      assessment="assessment.ratings"
+      width="400" height="400">
+    </canvas>
+  </div>
+</div>
