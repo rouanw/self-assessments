@@ -5,12 +5,13 @@ angular.module('coachingApp')
     return {
       restrict: 'A',
       scope: {
-        person: '='
+        assessment: '=',
+        labels: '='
       },
       link: function (scope, elem) {
         var data = {
-          labels: ['Testing', 'Architecture', 'Build & Deploy', 'Process & Culture'],
-          datasets: scope.person.selfAssessment
+          labels: scope.labels,
+          datasets: scope.assessment
         };
 
         var ctx = elem[0].getContext('2d');

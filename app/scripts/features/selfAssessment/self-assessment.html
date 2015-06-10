@@ -14,5 +14,8 @@
 <div ng-repeat="person in team">
   <h3>{{person.name}}</h3>
   <div>Working with us for {{ person.joiningDate | durationInMonths }} months (since {{person.joiningDate | date}})</div>
-  <canvas spider-chart person="person" width="400" height="400"></canvas>
+  <canvas spider-chart assessment="person.selfAssessment"
+    labels="['Testing', 'Architecture', 'Build & Deploy', 'Process & Culture']"
+    width="400" height="400">
+  </canvas>
 </div>
