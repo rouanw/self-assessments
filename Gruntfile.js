@@ -336,7 +336,7 @@ module.exports = function (grunt) {
         files: [{
           expand: true,
           cwd: '<%= yeoman.dist %>',
-          src: ['*.html', 'views/{,*/}*.html'],
+          src: ['*.html', 'features/{,*/}*.html'],
           dest: '<%= yeoman.dist %>'
         }]
       }
@@ -375,7 +375,7 @@ module.exports = function (grunt) {
             '.htaccess',
             '*.html',
             '*.json',
-            'views/{,*/}*.html',
+            'features/{,*/}*.html',
             'images/{,*/}*.{webp}',
             'styles/fonts/{,*/}*.*'
           ]

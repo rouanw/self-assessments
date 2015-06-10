@@ -1,5 +1,4 @@
 'use strict';
-/*global Chart:true */
 
 angular.module('coachingApp')
   .directive('spiderChart', function () {

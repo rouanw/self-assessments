@@ -20,11 +20,7 @@ angular
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl'
-      })
-      .when('/self-assessment', {
-        templateUrl: 'views/self-assessment.html',
+        templateUrl: 'scripts/features/selfAssessment/self-assessment.html',
         controller: 'SelfAssessmentCtrl'
       })
       .otherwise({
