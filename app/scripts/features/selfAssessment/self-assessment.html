@@ -11,23 +11,13 @@
 
 <small>This is an example self-assessment.</small>
 
-<div ng-repeat="person in team">
-  <h3>{{person.name}}</h3>
-  <div>Working with us for {{ person.joiningDate | durationInMonths }} months (since {{person.joiningDate | date}})</div>
-  <canvas spider-chart assessment="person.selfAssessment"
-    labels="['Testing', 'Architecture', 'Build & Deploy', 'Process & Culture']"
-    width="400" height="400">
-  </canvas>
-</div>
-
 <hr/>
 <h3>Specifics</h3>
 <div ng-repeat="person in team">
   <div ng-repeat="assessment in person.assessments">
     <h4>{{assessment.category}}</h4>
     <canvas spider-chart
-      labels="assessment.labels"
-      assessment="assessment.ratings"
+      assessment="assessment"
       width="400" height="400">
     </canvas>
   </div>
