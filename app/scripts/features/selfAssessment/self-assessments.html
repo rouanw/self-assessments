@@ -16,11 +16,11 @@ Filter by name
 
 <small>*These are example self-assessments.</small>
 
-<div ng-if="selectedPerson">
+<div ng-if="selectedPerson" class="row">
   <self-assessment person="selectedPerson"></self-assessment>
 </div>
 
-<div ng-repeat="person in people" ng-if="!selectedPerson">
+<div ng-repeat="person in people" ng-if="!selectedPerson" class="row">
   <hr/>
   <self-assessment person="person"></self-assessment>
 </div>
