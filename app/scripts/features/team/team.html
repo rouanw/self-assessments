@@ -1,0 +1,16 @@
+<h2>Self-assessment rubric</h2>
+<ol>
+  <li>Never heard of it</li>
+  <li>Can identify it when I see it</li>
+  <li>Can make a new one</li>
+  <li>Can refactor and re-organize</li>
+  <li>Can teach others</li>
+</ol>
+
+<hr/>
+
+<select ng-options="team for team in teamNames" ng-model="selectedTeamName" ng-change="updateTeam(selectedTeamName)"></select>
+
+<div ng-if="selectedTeamName" ng-repeat="person in selectedTeam" class="row">
+    <self-assessment person="person"></self-assessment>
+</div>

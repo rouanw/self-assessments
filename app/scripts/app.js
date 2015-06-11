@@ -24,6 +24,10 @@ angular
         templateUrl: 'scripts/features/selfAssessment/self-assessments.html',
         controller: 'SelfAssessmentCtrl'
       })
+      .when('/teams', {
+        templateUrl: 'scripts/features/team/team.html',
+        controller: 'SelfAssessmentCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
