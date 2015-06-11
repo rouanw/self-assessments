@@ -5,8 +5,7 @@ angular.module('coachingApp')
     return {
       restrict: 'A',
       scope: {
-        assessment: '=',
-        latest: '='
+        assessment: '='
       },
       link: function (scope, elem) {
         var ratings = [];

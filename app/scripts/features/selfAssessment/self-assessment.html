@@ -1,64 +1,20 @@
-<h2>Self-assessment rubric</h2>
-<ol>
-  <li>Never heard of it</li>
-  <li>Can identify it when I see it</li>
-  <li>Can make a new one</li>
-  <li>Can refactor and re-organize</li>
-  <li>Can teach others</li>
-</ol>
+<h2>{{person.name}}</h2>
+<p>Working with us for {{person.joiningDate | durationInMonths}} months (since {{person.joiningDate | date}})</p>
+
+<h3>Summary</h3>
+
+<canvas spider-chart
+  assessment="person.summary"
+  ng-if="person.summary"
+  width="400" height="400">
+</canvas>
 
 <hr/>
-
-Filter by name
-<input type="text" ng-model="selectedPerson"
- typeahead="person as person.name for person in people | limitTo:8"
- class="form-control">
-
-
-<small>*These are example self-assessments.</small>
-
-<div ng-if="selectedPerson">
-  <h2>{{selectedPerson.name}}</h2>
-  <p>Working with us for {{selectedPerson.joiningDate | durationInMonths}} months (since {{selectedPerson.joiningDate | date}})</p>
-
-  <h3>Summary</h3>
-
+<h3>Specifics</h3>
+<div ng-repeat="assessment in person.assessments">
+  <h4>{{assessment.category}}</h4>
   <canvas spider-chart
-    assessment="selectedPerson.summary"
-    ng-if="selectedPerson.summary"
+    assessment="assessment"
     width="400" height="400">
   </canvas>
-
-  <hr/>
-  <h3>Specifics</h3>
-    <div ng-repeat="assessment in selectedPerson.assessments">
-      <h4>{{assessment.category}}</h4>
-      <canvas spider-chart
-        assessment="assessment"
-        width="400" height="400">
-      </canvas>
-    </div>
-</div>
-
-<div ng-repeat="person in people" ng-if="!selectedPerson">
-  <hr/>
-  <h2>{{person.name}}</h2>
-  <p>Working with us for {{person.joiningDate | durationInMonths}} months (since {{person.joiningDate | date}})</p>
-
-  <h3>Summary</h3>
-
-  <canvas spider-chart
-    assessment="person.summary"
-    width="400" height="400">
-  </canvas>
-
-  <hr/>
-  <h3>Specifics</h3>
-    <div ng-repeat="assessment in person.assessments">
-      <h4>{{assessment.category}}</h4>
-      <canvas spider-chart
-        assessment="assessment"
-        width="400" height="400">
-      </canvas>
-    </div>
 </div>

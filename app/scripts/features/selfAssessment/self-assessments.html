@@ -1,0 +1,26 @@
+<h2>Self-assessment rubric</h2>
+<ol>
+  <li>Never heard of it</li>
+  <li>Can identify it when I see it</li>
+  <li>Can make a new one</li>
+  <li>Can refactor and re-organize</li>
+  <li>Can teach others</li>
+</ol>
+
+<hr/>
+
+Filter by name
+<input type="text" ng-model="selectedPerson"
+ typeahead="person as person.name for person in people | limitTo:8"
+ class="form-control">
+
+<small>*These are example self-assessments.</small>
+
+<div ng-if="selectedPerson">
+  <self-assessment person="selectedPerson"></self-assessment>
+</div>
+
+<div ng-repeat="person in people" ng-if="!selectedPerson">
+  <hr/>
+  <self-assessment person="person"></self-assessment>
+</div>

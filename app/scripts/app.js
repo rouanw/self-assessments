@@ -21,7 +21,7 @@ angular
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
-        templateUrl: 'scripts/features/selfAssessment/self-assessment.html',
+        templateUrl: 'scripts/features/selfAssessment/self-assessments.html',
         controller: 'SelfAssessmentCtrl'
       })
       .otherwise({
