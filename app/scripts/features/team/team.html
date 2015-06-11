@@ -9,8 +9,14 @@
 
 <hr/>
 
-<select ng-options="team for team in teamNames" ng-model="selectedTeamName" ng-change="updateTeam(selectedTeamName)"></select>
+<label>Select a team</label>
+<select ng-options="team.name for team in teams" ng-model="selectedTeam" class="form-control"></select>
 
-<div ng-if="selectedTeamName" ng-repeat="person in selectedTeam" class="row">
-    <self-assessment person="person"></self-assessment>
+<hr/>
+
+<div ng-if="selectedTeam" >
+  <h2 class="row">{{selectedTeam.name}} Team</h2>
+  <div ng-repeat="member in selectedTeam.members" class="row">
+      <self-assessment person="member"></self-assessment>
+  </div>
 </div>
