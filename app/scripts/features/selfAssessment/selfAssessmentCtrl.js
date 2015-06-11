@@ -5,7 +5,4 @@ angular.module('coachingApp')
     SelfAssessment.getPeople().then(function (people) {
       $scope.people = people;
     });
-    SelfAssessment.getTeams().then(function (teams) {
-      $scope.teams = teams;
-    });
   });

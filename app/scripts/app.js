@@ -26,7 +26,7 @@ angular
       })
       .when('/teams', {
         templateUrl: 'scripts/features/team/team.html',
-        controller: 'SelfAssessmentCtrl'
+        controller: 'TeamCtrl'
       })
       .otherwise({
         redirectTo: '/'

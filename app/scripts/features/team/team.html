@@ -17,6 +17,7 @@
 <div ng-if="selectedTeam" >
   <h2 class="row">{{selectedTeam.name}} Team</h2>
   <div ng-repeat="member in selectedTeam.members" class="row">
-      <self-assessment person="member"></self-assessment>
+    <hr/>
+    <self-assessment person="member"></self-assessment>
   </div>
 </div>
