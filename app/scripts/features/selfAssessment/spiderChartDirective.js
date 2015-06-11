@@ -10,7 +10,7 @@ angular.module('coachingApp')
       },
       link: function (scope, elem) {
         var ratings = [];
-        
+
         var previousRating = scope.assessment.ratings[scope.assessment.ratings.length - 2];
         if (previousRating) {
           previousRating.fillColor = 'rgba(220,220,220,0.2)';

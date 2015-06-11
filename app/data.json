@@ -62,6 +62,69 @@
           ]
         }
       ]
+    },
+    {
+      "name": "Sharon",
+      "joiningDate": "2015-01-23T09:00:00.000Z",
+      "currentTeam": "AO",
+      "assessments" : [
+        {
+          "category" : "Architecture",
+          "labels": ["Grunt", "IBR Framework", "Angular", "Styling"],
+          "ratings": [
+            {
+              "label": "Last month",
+              "data": [1, 1, 4, 2]
+            },
+            {
+              "label": "Current",
+              "data": [2, 5, 4, 3]
+            }
+          ]
+        },
+        {
+          "category" : "Build and deploy",
+          "labels": ["Build pipeline", "Git", "Bamboo", "Deployments", "Trunk based development"],
+          "ratings": [
+            {
+              "label": "Last month",
+              "data": [1, 1, 4, 2, 5]
+            },
+            {
+              "label": "Current",
+              "data": [2, 3, 5, 4, 3]
+            }
+          ]
+        },
+        {
+          "category" : "Testing",
+          "labels": ["Jasmine", "TDD", "Pacto", "Functional testing"],
+          "ratings": [
+            {
+              "label": "Last month",
+              "data": [1, 4, 2, 5]
+            },
+            {
+              "label": "Current",
+              "data": [2, 3, 5, 3]
+            }
+          ]
+        },
+        {
+          "category" : "Process and Culture",
+          "labels": ["Stories", "Agile rituals", "Collective code ownership", "Pairing"],
+          "ratings": [
+            {
+              "label": "Last month",
+              "data": [1, 1, 2, 5]
+            },
+            {
+              "label": "Current",
+              "data": [2, 1, 2, 3]
+            }
+          ]
+        }
+      ]
     }
   ]
 }
