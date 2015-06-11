@@ -3,11 +3,11 @@
 angular.module('coachingApp')
   .factory('SelfAssessment', function ($http, $q) {
     return {
-      getTeam: function () {
+      getPeople: function () {
         var request = {method: 'GET', url: 'data.json', data: {}};
         return $http(request).then(function(result) {
-          var team = result.data.team;
-          team.forEach(function (person) {
+          var people = result.data.people;
+          people.forEach(function (person) {
             person.summary = {
               category: 'Summary',
               ratings: [
@@ -24,7 +24,7 @@ angular.module('coachingApp')
               person.summary.labels.push(assessment.category);
             });
           });
-          return team;
+          return people;
         });
       }
     };
