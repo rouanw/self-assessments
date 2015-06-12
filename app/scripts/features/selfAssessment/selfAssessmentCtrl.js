@@ -5,4 +5,5 @@ angular.module('coachingApp')
     SelfAssessment.getPeople().then(function (people) {
       $scope.people = people;
     });
+    $scope.showDetail = true;
   });

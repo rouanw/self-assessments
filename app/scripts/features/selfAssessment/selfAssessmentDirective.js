@@ -5,7 +5,8 @@ angular.module('coachingApp')
     return {
       restrict: 'E',
       scope: {
-        person: '='
+        person: '=',
+        showDetail: '='
       },
       templateUrl: 'scripts/features/selfAssessment/self-assessment.html'
     };
