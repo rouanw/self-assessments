@@ -28,28 +28,39 @@ angular.module('coachingApp')
         });
       },
       getPeopleFromGitHub: function () {
-        var request = {method: 'GET', url: 'https://raw.githubusercontent.com/rouanw/my-capability-radar/master/my-radar.json', data: {}};
+        var users = ['rouanw'];
+        var userRequests = [];
+        users.forEach(function (user) {
+          userRequests.push($http({
+            method: 'GET',
+            url: 'https://raw.githubusercontent.com/' + user + '/my-capability-radar/master/my-radar.json',
+            data: {}
+          }));
+        });
 
-        var people = [];
+        return $q.all(userRequests).then(function (results) {
+          var people = [];
 
-        return $http(request).then(function(result) {
-          var person = result.data;
-          person.summary = {
-            category: 'Summary',
-            ratings: [
-              {
-                data: []
-              }
-            ],
-            labels: []
-          };
-          person.assessments.forEach(function (assessment) {
-            var currentRating = assessment.ratings[assessment.ratings.length - 1];
-            var average = _.sum(currentRating.data) / currentRating.data.length;
-            person.summary.ratings[0].data.push(average);
-            person.summary.labels.push(assessment.category);
+          results.forEach(function (result) {
+            var person = result.data;
+            person.summary = {
+              category: 'Summary',
+              ratings: [
+                {
+                  data: []
+                }
+              ],
+              labels: []
+            };
+            person.assessments.forEach(function (assessment) {
+              var currentRating = assessment.ratings[assessment.ratings.length - 1];
+              var average = _.sum(currentRating.data) / currentRating.data.length;
+              person.summary.ratings[0].data.push(average);
+              person.summary.labels.push(assessment.category);
+            });
+            people.push(person);
           });
-          people.push(person);
+
           return people;
         });
       },
