@@ -27,6 +27,32 @@ angular.module('coachingApp')
           return people;
         });
       },
+      getPeopleFromGitHub: function () {
+        var request = {method: 'GET', url: 'https://raw.githubusercontent.com/rouanw/my-capability-radar/master/my-radar.json', data: {}};
+
+        var people = [];
+
+        return $http(request).then(function(result) {
+          var person = result.data;
+          person.summary = {
+            category: 'Summary',
+            ratings: [
+              {
+                data: []
+              }
+            ],
+            labels: []
+          };
+          person.assessments.forEach(function (assessment) {
+            var currentRating = assessment.ratings[assessment.ratings.length - 1];
+            var average = _.sum(currentRating.data) / currentRating.data.length;
+            person.summary.ratings[0].data.push(average);
+            person.summary.labels.push(assessment.category);
+          });
+          people.push(person);
+          return people;
+        });
+      },
       getTeams: function () {
         return this.getPeople().then(function (people) {
           var teamNames = _.uniq(_.map(people, function (person) {
