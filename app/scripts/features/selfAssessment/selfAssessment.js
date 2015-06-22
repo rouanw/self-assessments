@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('coachingApp')
-  .factory('SelfAssessment', function ($http, $q) {
+  .factory('SelfAssessment', function ($http, $q, NotificationService) {
     return {
       getPeople: function () {
         var users;
@@ -44,6 +44,11 @@ angular.module('coachingApp')
             });
 
             return people;
+          }).catch (function (error) {
+            NotificationService.notification = {
+              message: 'Could not load one or more users specified in users.json',
+              type: 'danger'
+            }
           });
         });
       },
