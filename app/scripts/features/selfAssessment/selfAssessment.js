@@ -4,64 +4,47 @@ angular.module('coachingApp')
   .factory('SelfAssessment', function ($http, $q) {
     return {
       getPeople: function () {
-        var request = {method: 'GET', url: 'data.json', data: {}};
-        return $http(request).then(function(result) {
-          var people = result.data.people;
-          people.forEach(function (person) {
-            person.summary = {
-              category: 'Summary',
-              ratings: [
-                {
-                  data: []
-                }
-              ],
-              labels: []
-            };
-            person.assessments.forEach(function (assessment) {
-              var currentRating = assessment.ratings[assessment.ratings.length - 1];
-              var average = _.sum(currentRating.data) / currentRating.data.length;
-              person.summary.ratings[0].data.push(average);
-              person.summary.labels.push(assessment.category);
-            });
+        var users;
+
+        var retrieveUsers = $http({method: 'GET', url: 'users.json', data: {}}).then(function (result) {
+          users = result.data.users;
+          var userRequests = [];
+          users.forEach(function (user) {
+            userRequests.push($http({
+              method: 'GET',
+              url: 'https://raw.githubusercontent.com/' + user + '/my-capability-radar/master/my-radar.json',
+              data: {}
+            }));
           });
-          return people;
-        });
-      },
-      getPeopleFromGitHub: function () {
-        var users = ['rouanw'];
-        var userRequests = [];
-        users.forEach(function (user) {
-          userRequests.push($http({
-            method: 'GET',
-            url: 'https://raw.githubusercontent.com/' + user + '/my-capability-radar/master/my-radar.json',
-            data: {}
-          }));
+          return userRequests;
         });
 
-        return $q.all(userRequests).then(function (results) {
-          var people = [];
+        return retrieveUsers.then(function (userRequests) {
+          return $q.all(userRequests).then(function (results) {
+            var people = [];
 
-          results.forEach(function (result) {
-            var person = result.data;
-            person.summary = {
-              category: 'Summary',
-              ratings: [
-                {
-                  data: []
-                }
-              ],
-              labels: []
-            };
-            person.assessments.forEach(function (assessment) {
-              var currentRating = assessment.ratings[assessment.ratings.length - 1];
-              var average = _.sum(currentRating.data) / currentRating.data.length;
-              person.summary.ratings[0].data.push(average);
-              person.summary.labels.push(assessment.category);
+            results.forEach(function (result) {
+              var person = result.data;
+              person.summary = {
+                category: 'Summary',
+                ratings: [
+                  {
+                    data: []
+                  }
+                ],
+                labels: []
+              };
+              person.assessments.forEach(function (assessment) {
+                var currentRating = assessment.ratings[assessment.ratings.length - 1];
+                var average = _.sum(currentRating.data) / currentRating.data.length;
+                person.summary.ratings[0].data.push(average);
+                person.summary.labels.push(assessment.category);
+              });
+              people.push(person);
             });
-            people.push(person);
-          });
 
-          return people;
+            return people;
+          });
         });
       },
       getTeams: function () {
