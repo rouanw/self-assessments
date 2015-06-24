@@ -12,28 +12,42 @@ angular.module('coachingApp')
 
         var previousRating = scope.assessment.ratings[scope.assessment.ratings.length - 2];
         if (previousRating) {
-          previousRating.fillColor = 'rgba(220,220,220,0.2)';
-          previousRating.strokeColor = 'rgba(220,220,220,1)';
-          previousRating.pointColor = 'rgba(220,220,220,1)';
-          previousRating.pointStrokeColor = '#fff';
-          previousRating.pointHighlightFill = '#fff';
-          previousRating.pointHighlightStroke = 'rgba(220,220,220,1)';
-          ratings.push(previousRating);
+          var data = []
+          for(var key in previousRating) {
+            data.push(previousRating[key]);
+          }
+          var formattedPreviousRating = {
+            data: data,
+            fillColor: 'rgba(220,220,220,0.2)',
+            strokeColor: 'rgba(220,220,220,1)',
+            pointColor: 'rgba(220,220,220,1)',
+            pointStrokeColor: '#fff',
+            pointHighlightFill: '#fff',
+            pointHighlightStroke: 'rgba(220,220,220,1)'
+          }
+          ratings.push(formattedPreviousRating);
         }
 
         var currentRating = scope.assessment.ratings[scope.assessment.ratings.length - 1];
         if (currentRating) {
-          currentRating.fillColor = 'rgba(151,187,205,0.2)';
-          currentRating.strokeColor = 'rgba(151,187,205,1)';
-          currentRating.pointColor = 'rgba(151,187,205,1)';
-          currentRating.pointHighlightStroke = 'rgba(151,187,205,1)';
-          currentRating.pointStrokeColor = '#fff';
-          currentRating.pointHighlightFill = '#fff';
-          ratings.push(currentRating);
+          var data = []
+          for(var key in currentRating) {
+            data.push(currentRating[key]);
+          }
+          var formattedCurrentRating = {
+            data: data,
+            fillColor: 'rgba(151,187,205,0.2)',
+            strokeColor: 'rgba(151,187,205,1)',
+            pointColor: 'rgba(151,187,205,1)',
+            pointStrokeColor: '#fff',
+            pointHighlightFill: '#fff',
+            pointHighlightStroke: 'rgba(151,187,205,1)'
+          }
+          ratings.push(formattedCurrentRating);
         }
 
         var data = {
-          labels: scope.assessment.labels,
+          labels: Object.keys(currentRating),
           datasets: ratings
         };
 

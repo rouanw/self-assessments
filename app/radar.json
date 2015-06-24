@@ -1,0 +1,77 @@
+{
+  "name": "Test person",
+  "joiningDate": "2015-01-23T09:00:00.000Z",
+  "currentTeam": "Product Q",
+  "assessments" : [
+    {
+      "category" : "Architecture",
+      "ratings" : [
+        {
+          "Grunt": 1,
+          "IBR Framework": 1,
+          "Angular": 4,
+          "Styling": 2
+        },
+        {
+          "Grunt": 2,
+          "IBR Framework": 5,
+          "Angular": 4,
+          "Styling": 3
+        }
+      ]
+    },
+    {
+      "category" : "Build and deploy",
+      "ratings" : [
+        {
+          "Build pipeline" : 1,
+          "Git": 1,
+          "Bamboo": 1,
+          "Deployments": 4,
+          "Trunk based development": 2
+        },
+        {
+          "Build pipeline": 2,
+          "Git": 2,
+          "Bamboo": 5,
+          "Deployments": 4,
+          "Trunk based development": 3
+        }
+      ]
+    },
+    {
+      "category" : "Testing",
+      "ratings" : [
+        {
+          "Jasmine" : 1,
+          "TDD": 1,
+          "Pacto": 1,
+          "Functional testing": 4
+        },
+        {
+          "Jasmine": 5,
+          "TDD": 3,
+          "Pacto": 2,
+          "Functional testing": 5
+        }
+      ]
+    },
+    {
+      "category" : "Process and Culture",
+      "ratings" : [
+        {
+          "Stories" : 1,
+          "Agile rituals": 1,
+          "Collective code ownership": 1,
+          "Pairing": 4
+        },
+        {
+          "Stories": 2,
+          "Agile rituals": 2,
+          "Collective code ownership": 1,
+          "Pairing": 1
+        }
+      ]
+    }
+  ]
+}

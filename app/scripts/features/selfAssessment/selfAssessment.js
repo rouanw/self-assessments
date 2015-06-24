@@ -27,22 +27,22 @@ angular.module('coachingApp')
               var person = result.data;
               person.summary = {
                 category: 'Summary',
-                ratings: [
-                  {
-                    data: []
-                  }
-                ],
-                labels: []
+                ratings: [{}],
               };
+
               person.assessments.forEach(function (assessment) {
                 var currentRating = assessment.ratings[assessment.ratings.length - 1];
-                var average = _.sum(currentRating.data) / currentRating.data.length;
-                person.summary.ratings[0].data.push(average);
-                person.summary.labels.push(assessment.category);
+                var values = [];
+                for(var key in currentRating) {
+                  values.push(currentRating[key]);
+                }
+
+                var sum = _.sum(values);
+                var average = sum / Object.keys(currentRating).length;
+                person.summary.ratings[0][assessment.category] = average;
               });
               people.push(person);
             });
-
             return people;
           }).catch (function (error) {
             NotificationService.notification = {
