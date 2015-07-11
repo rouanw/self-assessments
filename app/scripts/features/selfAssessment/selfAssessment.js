@@ -10,9 +10,11 @@ angular.module('coachingApp')
           users = result.data.users;
           var userRequests = [];
           users.forEach(function (user) {
+            var url = user.includes('/') ? user
+                      : 'https://raw.githubusercontent.com/' + user + '/my-capability-radar/master/my-radar.json';
             userRequests.push($http({
               method: 'GET',
-              url: 'https://raw.githubusercontent.com/' + user + '/my-capability-radar/master/my-radar.json',
+              url: url,
               data: {}
             }));
           });
