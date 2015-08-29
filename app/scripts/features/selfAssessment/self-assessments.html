@@ -1,24 +1,36 @@
 <div class="input-group">
  <span class="input-group-addon" id="basic-addon1">
-   <label for="name">Filter by name</label>
+   <label for="url">Team list URL</label>
  </span>
- <input id="name" type="text" ng-model="selectedPerson"
-   typeahead="person as person.name for person in people | limitTo:8"
-   class="form-control">
+ <input id="url" type="text" ng-model="teamUrl" class="form-control">
  <span class="input-group-btn">
-   <button class="btn btn-default" ng-click="selectedPerson = undefined">Clear</button>
+   <button class="btn btn-default" ng-click="getPeople(teamUrl)">Go</button>
  </span>
 </div>
 
-<show-detail-option></show-detail-option>
+<br/>
 
-<small>*These are example self-assessments.</small>
+<div ng-show="people">
+  <div class="input-group">
+   <span class="input-group-addon" id="basic-addon1">
+     <label for="name">Filter by name</label>
+   </span>
+   <input id="name" type="text" ng-model="selectedPerson"
+     typeahead="person as person.name for person in people | limitTo:8"
+     class="form-control">
+   <span class="input-group-btn">
+     <button class="btn btn-default" ng-click="selectedPerson = undefined">Clear</button>
+   </span>
+  </div>
 
-<div ng-if="selectedPerson" class="row">
+  <show-detail-option></show-detail-option>
+</div>
+
+<div ng-show="selectedPerson" class="row">
   <self-assessment person="selectedPerson" show-detail="true"></self-assessment>
 </div>
 
-<div ng-repeat="person in people" ng-if="!selectedPerson" class="row">
+<div ng-repeat="person in people" ng-hide="selectedPerson" class="row">
   <hr/>
   <self-assessment person="person" show-detail="showDetail"></self-assessment>
 </div>

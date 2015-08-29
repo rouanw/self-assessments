@@ -3,10 +3,10 @@
 angular.module('coachingApp')
   .factory('SelfAssessment', function ($http, $q, NotificationService) {
     return {
-      getPeople: function () {
+      getPeople: function (url) {
         var users;
 
-        var retrieveUsers = $http({method: 'GET', url: 'users.json', data: {}}).then(function (result) {
+        var retrieveUsers = $http({method: 'GET', url: url || 'users.json', data: {}}).then(function (result) {
           users = result.data.users;
           var userRequests = [];
           users.forEach(function (user) {
