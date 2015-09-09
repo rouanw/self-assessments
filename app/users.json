@@ -1,3 +1,7 @@
 {
-  "users": ["rouanw"]
+  "users": [
+    "rouanw",
+    "https://raw.githubusercontent.com/rouanw/my-capability-radar/master/my-radar.json",
+    "rouanw"
+  ]
 }
