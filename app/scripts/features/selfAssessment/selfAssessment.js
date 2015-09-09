@@ -53,23 +53,6 @@ angular.module('coachingApp')
             }
           });
         });
-      },
-      getTeams: function () {
-        return this.getPeople().then(function (people) {
-          var teamNames = _.uniq(_.map(people, function (person) {
-            return person.currentTeam;
-          }));
-
-          var teams = _.map(teamNames, function (teamName) {
-            return {
-              name: teamName,
-              members: _.filter(people, function (person) {
-                return person.currentTeam === teamName;
-              })
-            }
-          });
-          return teams;
-        });
       }
     };
   });
